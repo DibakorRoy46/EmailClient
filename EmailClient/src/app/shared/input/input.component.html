@@ -1,0 +1,38 @@
+<div class="field">
+  <label >{{label}}</label>
+  <input [ngClass]=" showErrors()?'error':control.dirty?'success':''"[formControl]="control" >
+  <ng-container *ngIf="
+                    control.dirty &&
+                    control.touched &&
+                    control.errors
+                  ">
+    <div  class="ui pointing red basic label" *ngIf="control.errors['required']">
+      Value is required
+    </div>
+    <div  class="ui pointing red basic label" *ngIf="control.errors['minlength']">
+      Value you entered is
+      {{control.errors['minlength'].actualLength}}
+      characters long,but it must be at least
+      {{control.errors['minlength'].requiredLength}}
+      characters
+    </div>
+    <div  class="ui pointing red basic label" *ngIf="control.errors['maxlength']">
+      Value you entered is
+      {{control.errors['maxlength'].actualLength}}
+      characters long,but it must be at least
+      {{control.errors['maxlength'].requiredLength}}
+      characters
+    </div>
+
+    <div  class="ui pointing red basic label" *ngIf="control.errors['pattern']">
+      Please Enter a Valid Input
+    </div>
+    <div  class="ui pointing red basic label" *ngIf="control.errors['nonUniqueUsername']">
+      Username is Taken
+    </div>
+    <div  class="ui pointing red basic label" *ngIf="control.errors['noConnection']">
+      Can't tell username is taken
+    </div>
+  </ng-container>
+</div>
+

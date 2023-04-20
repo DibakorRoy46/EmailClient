@@ -1,0 +1,12 @@
+<h2>Create a Account</h2>
+
+<form class="ui form" [formGroup]="signinForm" (ngSubmit)="onSubmit()" >
+  <ng-container class="ui form">
+    <app-input label="Name" [control]="$any(signinForm.get('username'))"></app-input>
+    <app-input label="Password" [control]="$any(signinForm.get('password'))"></app-input>
+
+    <button class="ui submit button primary" type="submit" [disabled]="signinForm.invalid">Submit</button>
+  </ng-container>
+</form>
+
+

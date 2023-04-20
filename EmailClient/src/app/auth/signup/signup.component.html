@@ -1,0 +1,21 @@
+<h2>Create a Account</h2>
+
+<form class="ui form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <ng-container class="ui form">
+    <app-input label="Name" [control]="$any(authForm.get('username'))"></app-input>
+    <app-input label="Password" [control]="$any(authForm.get('password'))"></app-input>
+    <app-input label="Confirm Password" [control]="$any(authForm.get('passwordConfirmation'))"></app-input>
+<ng-container *ngIf="authForm.get('password')?.dirty &&
+                    authForm.get('passwordConfirmation')?.dirty && authForm.errors">
+  <div *ngIf="authForm.hasError('passwordsDontMatch')">
+    <p class="ui pointing red basic label" >
+      Password and Confirm Password Does not Match
+    </p>
+  </div>
+</ng-container>
+
+    <button class="ui submit button primary" type="submit" [disabled]="authForm.invalid">Submit</button>
+  </ng-container>
+</form>
+
+
